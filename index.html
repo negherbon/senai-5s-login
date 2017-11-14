@@ -1,27 +1,32 @@
+<html>
+
 <head>
   <link rel="stylesheet" href="index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
-<div class="container-main">
-  
-  <div class="container-logo">
-    <img class="container-logo--img" src="img/fiesc-senai.png">
+<body>
+  <div class="container-main">
+    
+    <div class="container-logo">
+      <img class="container-logo--img" src="img/fiesc-senai.png">
+    </div>
+
+    <div class="form-login">
+      <h3>Faça o login para continuar</h3>
+      <form name="form-login">
+        <input type="text" class="form-login--text email" placeholder="Seu e-mail" />
+        <input type="password" class="form-login--text password" placeholder="Sua senha" />
+        <input type="submit" class="form-login--submit" value="Entrar" />
+
+        <div class="form-forget">
+          <a href="forget-password.html" class="form-forget--link-color">Esqueci minha senha</a>
+        </div>
+      </form>                                                                                                    
+    </div>
   </div>
-
-  <div class="form-login">
-    <h3>Faça o login para continuar</h3>
-    <form>
-      <input type="text" class="form-login--text" placeholder="Seu e-mail" />
-      <input type="text" class="form-login--text" placeholder="Sua senha" />
-      <input type="submit" class="form-login--submit" value="Entrar" />
-
-      <div class="form-forget">
-        <a href="forget-password.html" class="form-forget--link-color">Esqueci minha senha</a>
-      </div>
-
-    </form>                                                                                                    
-  </div>
-
-</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
