@@ -13,6 +13,6 @@ $('.form-login').submit(function( event ){
     $.ajax({
         method: 'post',
         data: user,
-        url: 'http://localhost:4000/api/authenticate'
+        url: 'http://localhost:4000/authenticate'
     })
 });
