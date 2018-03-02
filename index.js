@@ -1,5 +1,4 @@
 $('.form-login').submit(function( event ){
-
     event.preventDefault();
 
     var email = $('.email').val();
