@@ -12,6 +12,13 @@ $('.form-login').submit(function( event ){
     $.ajax({
         method: 'post',
         data: user,
-        url: 'http://localhost:4000/authenticate'
+        url: 'http://localhost:4000/authenticate',
+        success(data){
+            if(data.isAuth)
+                window.location.href = 'http://localhost:4200/dashboard';
+        },
+        error(data){
+            alert(data.responseText);
+        }
     })
 });
