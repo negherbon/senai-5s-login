@@ -15,7 +15,8 @@ $('.form-login').submit(function( event ){
         url: 'http://localhost:4000/authenticate',
         success(data){
             if(data.isAuth)
-                window.location.href = 'http://localhost:4200/dashboard';
+                //redirecionar para componente que seta o token no localstorage
+                window.location.href = 'http://localhost:4200/auth?token=' + data.token;
         },
         error(data){
             alert(data.responseText);
