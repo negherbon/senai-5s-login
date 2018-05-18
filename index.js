@@ -16,7 +16,7 @@ $('.form-login').submit(function( event ){
         success(data){
             if(data.isAuth)
                 //redirecionar para componente que seta o token no localstorage
-                window.location.href = 'https://api-senai5s.herokuapp.com/auth?token=' + data.token;
+                window.location.href = 'https://web-senai5s.herokuapp.com/auth?token=' + data.token;
         },
         error(data){
             alert(data.responseText);
