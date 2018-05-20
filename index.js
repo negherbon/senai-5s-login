@@ -15,11 +15,11 @@ $('.form-login').submit(function( event ){
         url: 'https://api-senai5s.herokuapp.com/authenticate',
         success(data){
             if(data.isAuth)
-                //redirecionar para componente que seta o token no localstorage
                 window.location.href = 'https://web-senai5s.herokuapp.com/auth?token=' + data.token;
         },
         error(data){
-            alert(data.responseText);
+            if(data.status === 401)
+                swal("", data.responseText, "error");
         }
     })
 });
