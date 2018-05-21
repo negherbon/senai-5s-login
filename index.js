@@ -12,14 +12,14 @@ $('.form-login').submit(function( event ){
     $.ajax({
         method: 'post',
         data: user,
-        url: 'https://api-senai5s.herokuapp.com/authenticate',
+        url: 'http://localhost:4000/authenticate',
         success(data){
             if(data.isAuth)
-                //redirecionar para componente que seta o token no localstorage
-                window.location.href = 'https://web-senai5s.herokuapp.com/auth?token=' + data.token;
+                window.location.href = 'http://localhost:4200/auth?token=' + data.token;
         },
         error(data){
-            alert(data.responseText);
+            if(data.status === 401)
+                swal("", data.responseText, "error");
         }
     })
 });

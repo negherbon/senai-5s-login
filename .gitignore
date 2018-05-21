@@ -56,3 +56,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# this is commented because the settings are static
+index.js
