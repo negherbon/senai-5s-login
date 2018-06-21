@@ -2,24 +2,59 @@ $('.form-login').submit(function( event ){
     event.preventDefault();
 
     var email = $('.email').val();
-    var password = $('.password').val();
+    var cbFirstAccess = document.getElementById("cbFirstAccess").checked
+    
+    if( cbFirstAccess == false)
+    {
+        var password = $('.password').val();
 
-    var user = {
-        email: email,
-        password: password
+        var user = {
+            email: email,
+            password: password
+        }
+
+        $.ajax({
+            method: 'post',
+            data: user,
+            url: 'http://localhost:4000/authenticate',
+            success(data){
+                if(data.isAuth)
+                    //redirecionar para componente que seta o token no localstorage
+                    window.location.href = 'http://localhost:4200/auth?token=' + data.token;
+            },
+            error(data){
+                alert(data.responseText);
+            }
+        });
+    }else{
+        var user = {
+            email: email,
+            cbFirstAccess: true
+        }
+
+        $.ajax({
+            method: 'post',
+            data: user,
+            url: 'http://localhost:4000/validateFirstAccess',
+            success(data){
+                if(data.isFirstAccess)
+                    window.location.href = 'http://localhost:8080/firstAccess?id='+data.id;
+            },
+            error(data){
+                alert(data.responseText);
+            }
+        });
     }
 
-    $.ajax({
-        method: 'post',
-        data: user,
-        url: 'http://localhost:4000/authenticate',
-        success(data){
-            if(data.isAuth)
-                window.location.href = 'http://localhost:4200/auth?token=' + data.token;
-        },
-        error(data){
-            if(data.status === 401)
-                swal("", data.responseText, "error");
-        }
-    })
+
 });
+
+function firstAccess(cb) {
+    if (cb.checked){
+        document.getElementById('password').disabled = true;
+        document.getElementById('password').innerText = '';
+        
+    }else {
+        document.getElementById('password').disabled = false;        
+    }
+}
