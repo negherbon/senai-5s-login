@@ -25,7 +25,7 @@ body {
   text-align: center;
 }
   
-.form-login--text {
+.form-login--text, .form-new-password, .form-new-password-confirm {
   clear: left;
   display: block;
   font-size: 18px;
