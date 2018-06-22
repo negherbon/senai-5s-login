@@ -9,10 +9,11 @@ function verifyEmail(event) {
             url: 'http://localhost:4000/verifyEmail',
             success(data){
                 if(data)
-                    console.log(data);
+                swal("", data.msg, "success");
             },
             error(data){
-                console.log(data);
+                if(data.status === 404)
+                    swal("", data.responseJSON.msg, "error");
             }
         })
     }

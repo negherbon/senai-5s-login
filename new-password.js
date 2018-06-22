@@ -22,12 +22,12 @@ function saveNewPassword(event){
         },
         url: 'http://localhost:4000/users/' + userId,
         success: function(data, status) {
-            alert("Senha alterada com sucesso!");
+            swal("", data.message, "success");
             window.location.href = 'http://localhost:4200/auth?token=' + token;
         },
         error: function(data, status) {
             if(data.status === 401)
-                alert("O token expirou. Realize o procedimento de recuperar senha novamente!");
+                swal("", data.message, "error");
         },
         beforeSend: function(xhr, settings) {
             xhr.setRequestHeader('Authorization','Bearer ' + token );
