@@ -37,7 +37,7 @@ $('.form-login').submit(function( event ){
             url: 'http://localhost:4000/validateFirstAccess',
             success(data){
                 if(data.isFirstAccess)
-                    window.location.href = 'http://localhost:8080/firstAccess?id='+data.id;
+                    window.location.href = 'http://localhost:8080/first-access.html?id='+data.id;
             },
             error(data){
                 alert(data.responseText);
