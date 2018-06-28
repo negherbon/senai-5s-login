@@ -4,7 +4,7 @@ $('.form-login').submit(function( event ){
     var email = $('.email').val();
     var cbFirstAccess = document.getElementById("cbFirstAccess").checked
     
-    if( cbFirstAccess == false)
+    if(!cbFirstAccess)
     {
         var password = $('.password').val();
 
@@ -19,11 +19,10 @@ $('.form-login').submit(function( event ){
             url: 'http://localhost:4000/authenticate',
             success(data){
                 if(data.isAuth)
-                    //redirecionar para componente que seta o token no localstorage
                     window.location.href = 'http://localhost:4200/auth?token=' + data.token;
             },
             error(data){
-                alert(data.responseText);
+                swal('', data.responseText, 'error');
             }
         });
     }else{
